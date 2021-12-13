@@ -4,13 +4,13 @@ from datetime import datetime
 
 data = []
 
-def getFiles():
+def get_files():
     listFiles = os.listdir("../storage")
     listFiles = list(filter(lambda x: (x[-7:] == ".ledger" and x != "index.ledger"), listFiles))
     print(listFiles)
     return listFiles
 
-def storeInformation(filename):
+def store_information(filename):
     file = open(filename, 'r')
     record = []
     for line in file.readline():
@@ -29,13 +29,10 @@ def storeInformation(filename):
             record += line.split("\t")
     print(data)
 
-def datetimeFormat(date, attribute):
+def datetime_format(date, attribute):
     dateFormat = datetime.strptime(date, '%Y/%m/%d')
     print(dateFormat)
     return dateFormat
 
-def sortObjects(objects):
+def sort_objects(objects):
     objects.sort(key = lambda x: x.attribute)
-
-
-storeInformation('../storage/Bitcoin.ledger')

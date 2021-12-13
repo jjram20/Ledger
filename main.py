@@ -2,15 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import click
-from utils.print import printFiles, getFiles
+from utils.print import print_file, print_files, get_files
 
 @click.group()
 def cli():
     pass
 
-@click.command()
-def printfiles():
-    printFiles(getFiles())
+@click.command(name = 'printfile')
+@click.option('--file')
+@click.argument('file')
+def printfiles(file):
+    print_file(file)
 
 cli.add_command(printfiles)
 
